@@ -23,10 +23,10 @@ export default function HomeScreen() {
     const updateAudioPosition = async () => {
       if (sound) {
         const status = await sound.getStatusAsync();
-        setAudioPosition(status.positionMillis);
+        setAudioPosition(status.positionMillis / 1000);
       }
     };
-    const interval = setInterval(updateAudioPosition, 100);
+    const interval = setInterval(updateAudioPosition, 2000);
 
     return () => clearInterval(interval);
   }, [sound]);

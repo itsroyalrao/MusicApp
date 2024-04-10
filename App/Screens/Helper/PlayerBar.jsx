@@ -15,21 +15,19 @@ const PlayerBar = ({
   onSeek, // New prop for seeking the audio
 }) => {
   const currentFile = audioFiles[currentPlayingIndex];
-
   // State to track slider value
   const [sliderValue, setSliderValue] = useState(0);
 
   // Update slider value when audio position changes
   useEffect(() => {
-    // console.log("sliderValue", sliderValue);
-    setSliderValue(audioPosition / 1000);
+    console.log("sliderValue", sliderValue);
+    setSliderValue(audioPosition);
   }, [audioPosition]);
 
   // Function to handle sliding
   const handleSliderChange = (value) => {
-    console.log(value);
-    // setSliderValue(value);
-    setAudioPosition(value * 1000);
+    setSliderValue(value);
+    setAudioPosition(value);
     // Seek to the desired position when sliding the slider
     onSeek(value);
   };
