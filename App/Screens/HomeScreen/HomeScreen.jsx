@@ -76,7 +76,6 @@ export default function HomeScreen() {
       await sound.setPositionAsync(position * 1000);
       setAudioPosition(position);
     }
-    // console.log("position", position);
   };
 
   return (
@@ -163,6 +162,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   changeTextColor: {
-    color: "red",
+    color: "green",
   },
 });

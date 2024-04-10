@@ -20,7 +20,6 @@ const PlayerBar = ({
 
   // Update slider value when audio position changes
   useEffect(() => {
-    console.log("sliderValue", sliderValue);
     setSliderValue(audioPosition);
   }, [audioPosition]);
 
@@ -43,7 +42,9 @@ const PlayerBar = ({
         style={styles.playerBarImage}
       />
       <View style={styles.playerBarText}>
-        <Text style={styles.playerBarTitle}>{currentFile.filename}</Text>
+        <Text style={styles.playerBarTitle} numberOfLines={1}>
+          {currentFile.filename}
+        </Text>
         <View style={styles.playerBarControls}>
           <TouchableOpacity onPress={onPrevious}>
             <Text style={styles.playerBarButton}>
@@ -60,10 +61,11 @@ const PlayerBar = ({
             </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={onNext}>
-            <Icons name="forward" size={20} color={"whitesmoke"} />
+            <Text style={styles.playerBarButton}>
+              <Icons name="forward" size={20} color={"whitesmoke"} />
+            </Text>
           </TouchableOpacity>
         </View>
-        {/* Slider Component */}
         <Slider
           style={{ width: "100%", marginTop: 10 }}
           minimumValue={0}
@@ -87,28 +89,34 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "black",
+    backgroundColor: "green",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     padding: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   playerBarImage: {
     width: 50,
     height: 50,
     marginRight: 10,
+    borderRadius: 25,
   },
   playerBarText: {
     flex: 1,
+    gap: 9,
   },
   playerBarTitle: {
     color: "white",
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: "600",
+    textTransform: "capitalize",
+    overflow: "hidden",
   },
   playerBarControls: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
   },
   playerBarButton: {
     color: "white",

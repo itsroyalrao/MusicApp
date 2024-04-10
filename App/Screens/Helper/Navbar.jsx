@@ -22,7 +22,7 @@ const sty = StyleSheet.create({
     alignItems: 'center'
   },
   text1: {
-    color: "red",
+    color: "green",
     fontSize: 25,
   },
 });
